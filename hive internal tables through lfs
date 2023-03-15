@@ -1,12 +1,14 @@
-#make data ready in your system(department_data.csv)
-#make a directory in your lfs (hive_internal_table_lfs)
-#now upload ur data into this folder using filezilla
+# 18 steps process:
 
-hive #to start hive engine
-create database name_of_database; #create database named (hive_database_1)
-use name_of_database; #now use the database created which is hive_database_1
+1.#make data ready in your system(department_data.csv)
+2.#make a directory in your lfs (hive_internal_table_lfs)
+3.#now upload ur data into this folder using filezilla
 
-create table hive_internal_lfs_department_data_table         #creating an internal table
+4.hive #to start hive engine
+5.create database name_of_database; #create database named (hive_database_1)
+6.use name_of_database; #now use the database created which is hive_database_1
+
+7.create table hive_internal_lfs_department_data_table         #creating an internal table
 (
 dept_id int,
 dept_name string,
@@ -16,21 +18,25 @@ salary int
 row format delimited
 fields separated by ',';
 
-show tables; #to see all the tables in that database
+8.show tables; #to see all the tables in that database
 
-describe tablename; #to see different fields and datatype of each field of that table
+9.describe tablename; #to see different fields and datatype of each field of that table
 
-describe formatted tablename; #to see the detailed description of that table
+10.describe formatted tablename; #to see the detailed description of that table
 
-hadoop fs -ls /path of that table that we got in describe formatted  #to see whether the internal table is created in hive warehouse
+11.hadoop fs -ls /path of that table that we got in describe formatted  #to see whether the internal table is created in hive warehouse
 
-load data local inpath 'file:///path of that file in lfs(home/cloudera/hive_internal_table_lfs/department_data.csv)' into table tablename;
+12.load data local inpath 'file:///path of that file in lfs(home/cloudera/hive_internal_table_lfs/department_data.csv)' into table tablename;
 # to load data from lfs file into table we have made
 
-select * from tablename; #to see the contents of that table
+13.select * from tablename; #to see the contents of that table
 
-select count(*) from tablename; #to count the contents of that table
+14.select count(*) from tablename; #to count the contents of that table
 
-hadoop fs -ls /path of that table # to see that in internal table file gets uploaded actually
+15.hadoop fs -ls /path of that table # to see that in internal table file gets uploaded actually
 
-set hive.cli.print.header = true; #if u want to print the col names in select *
+16.set hive.cli.print.header = true; #if u want to print the col names in select *
+
+17.exit; # to exit hive
+
+18.ls -l /path of the file in lfs #to see the contents are cut paste and the file .csv is empty now
