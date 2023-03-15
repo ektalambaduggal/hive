@@ -1,1 +1,36 @@
+#make data ready in your system(department_data.csv)
+#make a directory in your lfs (hive_internal_table_lfs)
+#now upload ur data into this folder using filezilla
 
+hive #to start hive engine
+create database name_of_database; #create database named (hive_database_1)
+use name_of_database; #now use the database created which is hive_database_1
+
+create table hive_internal_lfs_department_data_table         #creating an internal table
+(
+dept_id int,
+dept_name string,
+manager_id int,
+salary int
+)
+row format delimited
+fields separated by ',';
+
+show tables; #to see all the tables in that database
+
+describe tablename; #to see different fields and datatype of each field of that table
+
+describe formatted tablename; #to see the detailed description of that table
+
+hadoop fs -ls /path of that table that we got in describe formatted  #to see whether the internal table is created in hive warehouse
+
+load data local inpath 'file:///path of that file in lfs(home/cloudera/hive_internal_table_lfs/department_data.csv)' into table tablename;
+# to load data from lfs file into table we have made
+
+select * from tablename; #to see the contents of that table
+
+select count(*) from tablename; #to count the contents of that table
+
+hadoop fs -ls /path of that table # to see that in internal table file gets uploaded actually
+
+set hive.cli.print.header = true; #if u want to print the col names in select *
