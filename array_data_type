@@ -1,0 +1,35 @@
+1. create a file array_data in lfs that has array data in it
+
+101,anil,hadoop:bigdata:spark
+102,sunil,hadoop:hive:casandra:oozie
+103,anik, hive:hadoop:derby
+
+2. create an internal table 
+
+   create table tablename
+   (
+   id int,
+   name string,
+   skills array<string>
+   )
+   row formatt delimited
+   fields terminted by ','
+   collection items terminated by ':';
+   
+3. load this array data into table
+    
+    load data local inpath 'file:///path where array data file is stored' into table tablename;
+    
+4. select * from tablename
+
+5. set hive.cli.print.header = true;
+
+6. select id , name from tablename;
+
+7. select id, name, skills[0] as primeskill from tablename;
+
+8. select id , name,
+   size(skills) as size_of_skills_array,
+   array_contains(skills,"hadoop") as know_hadoop,
+   sort_array(skills) from tablename;
+   
