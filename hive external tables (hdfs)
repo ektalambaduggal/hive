@@ -1,1 +1,16 @@
+1.make sure that you have reloaded the data file in hdfs folder again because while creating internal table through hdfs the data file got cut paste
 
+2. now create external table and also give the location of file till the folder that has file, where table has to point to
+
+   create external table tablename
+   (
+   dept_id int,
+   dept_name string,
+   manager_id int,
+   salary int
+   )
+   row format delimited
+   fields terminated by ','
+   location '/hive_internal_table_hdfs/';
+   
+3. rest all commands are same
