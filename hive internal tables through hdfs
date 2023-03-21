@@ -1,1 +1,12 @@
+1. create a folder in the root(/) of hdfs and then copy the department data file into this from lfs
+
+2. use the same old database in hive
+
+3. create a new table in the database in the same way as internal table is created
+
+4. load the table
+   
+   load data inpath 'path of the file in hdfs' into table tablename;
+   
+5. now u can see the table information as well as the contents of table as we did earlier in internal table from lfs
 
