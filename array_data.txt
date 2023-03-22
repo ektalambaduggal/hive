@@ -1,1 +1,3 @@
-
+101,anil,hadoop:bigdata:spark
+102,sunil,hadoop:hive:casandra:oozie
+103,anik, hive:hadoop:derby
